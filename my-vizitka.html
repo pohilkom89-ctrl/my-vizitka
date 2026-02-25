@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Михаил Похилько — цифровые продукты под ключ, AI-разработка, Telegram-боты, интеграции" />
+  <meta property="og:title" content="Михаил Похилько" />
+  <meta property="og:description" content="Цифровые продукты под ключ · AI-разработка" />
+  <meta property="og:type" content="profile" />
+  <title>Михаил Похилько</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0b12;
+      --card: #11111d;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --text: #f0f0f8;
+      --muted: #7070a0;
+      --border: rgba(108,99,255,0.18);
+      --green: #4ade80;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(108,99,255,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(167,139,250,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 36px 28px 32px;
+      text-align: center;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+      animation: rise .6s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* photo */
+    .avatar-wrap {
+      position: relative;
+      width: 88px; height: 88px;
+      margin: 0 auto 20px;
+    }
+    .avatar-wrap::before {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent2), var(--accent));
+      animation: spin 4s linear infinite;
+      opacity: .7;
+      will-change: transform;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar {
+      position: relative;
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--bg);
+      display: block;
+      z-index: 1;
+      background: #1e1e32 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Ccircle cx='44' cy='34' r='18' fill='%236c63ff22'/%3E%3Cellipse cx='44' cy='72' rx='26' ry='20' fill='%236c63ff22'/%3E%3C/svg%3E") center/cover;
+    }
+
+    /* status */
+    .status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; color: var(--green);
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 20px; padding: 3px 10px;
+      margin-bottom: 14px;
+      font-family: 'Syne', sans-serif; letter-spacing: .5px;
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* name */
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.55rem; font-weight: 800;
+      line-height: 1.15; margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .role {
+      font-size: 0.82rem; color: var(--muted);
+      letter-spacing: .4px; margin-bottom: 20px;
+    }
+
+    /* divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 20px;
+    }
+
+    /* services */
+    .services {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 24px; text-align: left;
+    }
+    .service {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(108,99,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      transition: background .2s, border-color .2s;
+    }
+    .service:hover {
+      background: rgba(108,99,255,0.12);
+      border-color: rgba(108,99,255,0.4);
+    }
+    .service-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(108,99,255,0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-text { flex: 1; }
+    .service-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--text); line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 0.72rem; color: var(--muted); margin-top: 1px;
+    }
+
+    /* === Кнопки === */
+    .btn-group {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 22px;
+    }
+    .btn-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: none; border-radius: 50px;
+      /* padding-bottom больше — фиксит клиппинг хвостика у "g" */
+      padding: 12px 16px 14px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .3px;
+      line-height: 1.3;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn svg { flex-shrink: 0; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(108,99,255,0.38);
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(108,99,255,0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(108,99,255,0.1);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: rgba(108,99,255,0.18);
+      border-color: rgba(108,99,255,0.4);
+      transform: translateY(-2px);
+    }
+
+    /* === QR-код === */
+    .qr-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      margin-bottom: 18px;
+    }
+    .qr-label {
+      font-size: 0.67rem; color: var(--muted); letter-spacing: .6px;
+      font-family: 'Syne', sans-serif; text-transform: uppercase;
+    }
+    #qr-code {
+      background: #fff;
+      border-radius: 12px;
+      padding: 8px;
+      display: inline-block;
+      line-height: 0;
+    }
+
+    /* handle */
+    .handle {
+      font-size: 0.72rem; color: var(--muted);
+    }
+    .handle a { color: var(--muted); text-decoration: none; }
+    .handle a:hover { color: var(--accent2); }
+
+    /* === Адаптив === */
+    @media (max-width: 420px) {
+      .card {
+        border-radius: 20px;
+        padding: 28px 20px 24px;
+      }
+      h1 { font-size: 1.35rem; }
+      .btn-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .btn { font-size: 0.8rem; padding: 11px 12px 13px; gap: 6px; }
+      .service { padding: 10px 12px; }
+    }
+
+    /* На десктопе — чуть поднять карточку, дать воздух */
+    @media (min-height: 750px) {
+      body { align-items: center; }
+    }
+    @media (max-height: 749px) {
+      body { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="avatar-wrap">
+    <img class="avatar" src="photo.png" alt="Михаил Похилько" loading="lazy" onerror="this.onerror=null">
+  </div>
+
+  <div class="status"><span class="status-dot"></span> Открыт к проектам</div>
+
+  <h1>Михаил Похилько</h1>
+  <p class="role">Цифровые продукты под ключ · AI-разработка</p>
+
+  <hr>
+
+  <div class="services">
+    <div class="service">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>
+        </svg>
+      </div>
+      <div class="service-text">
+        <div class="service-name">AI-автоматизация</div>
+        <div class="service-desc">Боты, агенты, умные рабочие процессы</div>
+      </div>
+    </div>
+    <div class="service">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="service-text">
+        <div class="service-name">Веб-разработка</div>
+        <div class="service-desc">Лендинги, SaaS, MVP от идеи до запуска</div>
+      </div>
+    </div>
+    <div class="service">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div class="service-text">
+        <div class="service-name">Интеграции</div>
+        <div class="service-desc">API, Telegram-боты, CRM и no-code связки</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Кнопки -->
+  <div class="btn-group">
+    <a class="btn btn-primary" href="https://t.me/MuXauJl89" target="_blank" rel="noopener noreferrer">
+      <!-- Telegram icon -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.287c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.934z"/>
+      </svg>
+      Написать в Telegram
+    </a>
+    <div class="btn-row">
+      <a class="btn btn-secondary" href="mailto:misha.pohil@yandex.ru">
+        <!-- Email icon -->
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-10 5L2 7"/>
+        </svg>
+        Email
+      </a>
+      <a class="btn btn-secondary" href="https://max.ru/ВАША_ССЫЛКА" target="_blank" rel="noopener noreferrer">
+        <!-- Max (VK) icon -->
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.864 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.271.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.491-.085.745-.576.745z"/>
+        </svg>
+        Max
+      </a>
+    </div>
+  </div>
+
+  <!-- QR-код Telegram -->
+  <div class="qr-wrap">
+    <div class="qr-label">Telegram QR</div>
+    <div id="qr-code"></div>
+  </div>
+
+  <div class="handle"><a href="https://t.me/MuXauJl89" target="_blank" rel="noopener noreferrer">@MuXauJl89</a></div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("qr-code"), {
+    text: "https://t.me/MuXauJl89",
+    width: 100,
+    height: 100,
+    colorDark: "#6c63ff",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+
+</body>
+</html>
